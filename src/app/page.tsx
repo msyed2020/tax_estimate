@@ -23,10 +23,10 @@ export default function Home() {
           <select
             value={filingStatus}
             onChange={(e) => setFilingStatus(e.target.value)}
-            className="block w-full mt-1 border-2 border-gray-200 px-4 py-2.5 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors"
+            className="block w-full mt-1 border-2 border-gray-200 px-4 py-2.5 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors text-gray-900"
           >
-            <option value="single">Single</option>
-            <option value="married">Married</option>
+            <option value="single" className="text-gray-900">Single</option>
+            <option value="married" className="text-gray-900">Married</option>
           </select>
         </div>
 
@@ -52,7 +52,7 @@ function Input({ label, value, onChange }: { label: string, value: number, onCha
           type="number"
           value={value}
           onChange={(e) => onChange(parseFloat(e.target.value))}
-          className="block w-full border-2 border-gray-200 px-4 py-2.5 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors"
+          className="block w-full border-2 border-gray-200 px-4 py-2.5 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors text-gray-900"
         />
       </div>
     );
