@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 
 export default function Home() {
@@ -12,28 +14,30 @@ export default function Home() {
   const afterTaxIncome = income - tax;
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-6 bg-gray-100">
-      <h1 className="text-3xl font-bold mb-6">Tax Estimator</h1>
-      <div className="bg-white shadow-md p-6 rounded-md w-full max-w-md space-y-4">
+    <main className="min-h-screen flex flex-col items-center justify-center p-6 bg-gray-50">
+      <h1 className="text-4xl font-bold mb-8 text-gray-800">Tax Estimator</h1>
+      <div className="bg-white shadow-lg p-8 rounded-lg w-full max-w-md space-y-6">
         <Input label="Annual Income ($)" value={income} onChange={setIncome} />
         <div>
-          <label className="font-medium">Filing Status</label>
+          <label className="font-semibold text-gray-700 block mb-2">Filing Status</label>
           <select
             value={filingStatus}
             onChange={(e) => setFilingStatus(e.target.value)}
-            className="block w-full mt-1 border px-3 py-2 rounded"
+            className="block w-full mt-1 border-2 border-gray-200 px-4 py-2.5 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors"
           >
             <option value="single">Single</option>
             <option value="married">Married</option>
           </select>
         </div>
 
-        <div className="mt-4 space-y-1 text-sm text-gray-700">
-          <p>Standard Deduction: ${standardDeduction.toLocaleString()}</p>
-          <p>Taxable Income: ${taxableIncome.toLocaleString()}</p>
-          <p>Estimated Tax: ${tax.toFixed(2)}</p>
-          <p>Effective Tax Rate: {effectiveRate.toFixed(2)}%</p>
-          <p>After-Tax Income: ${afterTaxIncome.toLocaleString()}</p>
+        <div className="mt-8 space-y-3 text-base">
+          <div className="p-4 bg-gray-50 rounded-lg">
+            <p className="font-medium text-gray-800">Standard Deduction: <span className="text-blue-600">${standardDeduction.toLocaleString()}</span></p>
+            <p className="font-medium text-gray-800">Taxable Income: <span className="text-blue-600">${taxableIncome.toLocaleString()}</span></p>
+            <p className="font-medium text-gray-800">Estimated Tax: <span className="text-blue-600">${tax.toFixed(2)}</span></p>
+            <p className="font-medium text-gray-800">Effective Tax Rate: <span className="text-blue-600">{effectiveRate.toFixed(2)}%</span></p>
+            <p className="font-medium text-gray-800">After-Tax Income: <span className="text-blue-600">${afterTaxIncome.toLocaleString()}</span></p>
+          </div>
         </div>
       </div>
     </main>
@@ -43,12 +47,12 @@ export default function Home() {
 function Input({ label, value, onChange }: { label: string, value: number, onChange: (v: number) => void }) {
     return (
       <div>
-        <label className="font-medium">{label}</label>
+        <label className="font-semibold text-gray-700 block mb-2">{label}</label>
         <input
           type="number"
           value={value}
           onChange={(e) => onChange(parseFloat(e.target.value))}
-          className="block w-full border px-3 py-2 rounded"
+          className="block w-full border-2 border-gray-200 px-4 py-2.5 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors"
         />
       </div>
     );
