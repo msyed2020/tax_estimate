@@ -40,6 +40,21 @@ export default function Home() {
   );
 }
 
+function Input({ label, value, onChange }: { label: string, value: number, onChange: (v: number) => void }) {
+    return (
+      <div>
+        <label className="font-medium">{label}</label>
+        <input
+          type="number"
+          value={value}
+          onChange={(e) => onChange(parseFloat(e.target.value))}
+          className="block w-full border px-3 py-2 rounded"
+        />
+      </div>
+    );
+  }
+  
+
 function calculateTax(income: number, status: string): number {
     return 1;
 }
