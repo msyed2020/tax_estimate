@@ -41,5 +41,5 @@ export default function Home() {
 }
 
 function calculateTax(income: number, status: string): number {
-
+    return 1;
 }
