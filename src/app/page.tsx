@@ -56,5 +56,37 @@ function Input({ label, value, onChange }: { label: string, value: number, onCha
   
 
 function calculateTax(income: number, status: string): number {
-    return 1;
+    const brackets =
+    status === "married"
+      ? [
+          [0, 0.10],
+          [23200, 0.12],
+          [94000, 0.22],
+          [201050, 0.24],
+          [383900, 0.32],
+          [487450, 0.35],
+          [732800, 0.37],
+        ]
+      : [
+          [0, 0.10],
+          [11600, 0.12],
+          [47000, 0.22],
+          [100525, 0.24],
+          [191950, 0.32],
+          [243725, 0.35],
+          [365600, 0.37],
+        ];
+
+    let tax = 0;
+    for (let i = 0; i < brackets.length; i++) {
+        const [limit, rate] = brackets[i];
+        const nextLimit = brackets[i + 1]?.[0] ?? Infinity;
+        if (income > limit) {
+        const taxable = Math.min(income, nextLimit) - limit;
+        tax += taxable * rate;
+        } else {
+        break;
+        }
+    }
+    return tax;
 }
